@@ -1,7 +1,9 @@
 package com.ozgursarki
 
-import com.ozgursarki.apitest2.model.CountryNameItem
+import com.ozgursarki.apitest2.model.Countries
+import com.ozgursarki.apitest2.model.Country
 
-interface ClickListener {
-    fun clicked(country:CountryNameItem)
+
+interface ClickListenerForFlag {
+    fun clicked(flag: Countries)
 }

@@ -8,18 +8,19 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import com.ozgursarki.ClickListener
+import com.ozgursarki.ClickListenerForFlag
 import com.ozgursarki.apitest2.R
 import com.ozgursarki.apitest2.adapter.CountryListAdapter
 import com.ozgursarki.apitest2.databinding.CountryListFragmentBinding
+import com.ozgursarki.apitest2.model.Countries
+import com.ozgursarki.apitest2.model.Country
 import com.ozgursarki.apitest2.model.CountryNameItem
 import com.ozgursarki.apitest2.viewmodel.CountryListViewModel
 
-class CountryListFragment : Fragment(), ClickListener{
+class CountryListFragment : Fragment(), ClickListenerForFlag {
 
     private lateinit var viewmodel: CountryListViewModel
     private lateinit var binding: CountryListFragmentBinding
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,14 +36,15 @@ class CountryListFragment : Fragment(), ClickListener{
 
         val adapter = CountryListAdapter(arrayListOf())
         binding.recyclerview.adapter = adapter
+        adapter.setListener(this)
 
         viewmodel = ViewModelProvider(this)[CountryListViewModel::class.java]
+        viewmodel.getAllCountries()
+        viewmodel.countries.observe(viewLifecycleOwner){
 
-        viewmodel.currentName.observe(viewLifecycleOwner){
+
             adapter.setList(it)
 
-            getCountry()
-            getCountryLang()
         }
     }
 
@@ -54,8 +56,8 @@ class CountryListFragment : Fragment(), ClickListener{
         viewmodel.getCountryLang()
     }
 
-    override fun clicked(country: CountryNameItem) {
-        this.findNavController().navigate(R.id.action_countryListFragment_to_clickedCountryFragment)
+    override fun clicked(flag: Countries) {
+        findNavController().navigate(R.id.action_countryListFragment_to_clickedCountryFragment)
     }
 
 

@@ -1,16 +1,15 @@
 package com.ozgursarki.apitest2
 
-import com.ozgursarki.apitest2.model.CountryLang
-import com.ozgursarki.apitest2.model.CountryName
+import com.ozgursarki.apitest2.model.Countries
+import com.ozgursarki.apitest2.model.Country
+import com.ozgursarki.apitest2.model.InfoClickedFlag
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface CountryAPI {
+    @GET("all")
+    suspend fun getCountries(): Country
 
     @GET("name/{name}")
-    suspend fun getCountryName(): CountryName
-
-    @GET("currency/{currency}")
-    suspend fun getCountryLang(): CountryLang
+    suspend fun getOnFlag(@Path("name") name : String) : InfoClickedFlag
 }

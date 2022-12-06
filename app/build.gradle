@@ -19,6 +19,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildscript {
+        repositories {
+            google()
+        }
+        dependencies {
+            classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3")
+        }
+    }
+
 
     buildTypes {
         release {
@@ -72,6 +81,10 @@ dependencies {
 
     //viewModel
     implementation "android.arch.lifecycle:extensions:1.1.1"
+
+    //picasso
+
+    implementation 'com.squareup.picasso:picasso:2.8'
 
 
 
