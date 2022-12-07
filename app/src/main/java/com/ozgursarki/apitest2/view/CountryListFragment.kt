@@ -56,7 +56,7 @@ class CountryListFragment : Fragment(), ClickListenerForFlag {
         viewmodel.getCountryLang()
     }
 
-    override fun clicked(flag: Countries) {
+    override fun clicked(country: Countries) {
         findNavController().navigate(R.id.action_countryListFragment_to_clickedCountryFragment)
     }
 
