@@ -25,8 +25,8 @@ class ClickedCountryViewModel(application: Application): AndroidViewModel(applic
 
     fun getFlagsInfo(name:String){
         viewModelScope.launch {
-            val response = api.getOnFlag(name)
-            infoFlag.value = response
+            infoFlag.value = api.getOnFlag(name)
+
         }
     }
 }

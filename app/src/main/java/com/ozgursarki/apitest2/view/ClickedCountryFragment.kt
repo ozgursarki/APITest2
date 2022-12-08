@@ -57,20 +57,3 @@ class ClickedCountryFragment : Fragment() {
         }
     }
 
-
-        /*
-         val countryName = binding.countryName
-                val countryImage = binding.countryImage
-                val countryRegion = binding.countryRegion
-                val countryLang = binding.countryLang
-                val countryCurrency = binding.countryCurrency
-
-
-
-                Picasso.get().load("https://restcountries.com/v3.1/all/flags").into(countryImage)
-
-                  countryName.text = binding.countryName.text
-                countryRegion.text = flag.region
-                countryLang.text = flag.languages.tur
-                countryCurrency.text = flag.currencies.TRY.toString()
-         */
