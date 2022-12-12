@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.ozgursarki.apitest2.CountryAPI
 import com.ozgursarki.apitest2.Util
+import com.ozgursarki.apitest2.model.Countries
 import com.ozgursarki.apitest2.model.CountryLang
 import com.ozgursarki.apitest2.model.CountryName
 import kotlinx.coroutines.launch
@@ -13,28 +14,21 @@ import retrofit2.Retrofit
 
 class CountryListViewModel(application: Application) : AndroidViewModel(application){
 
-    private var retrofit : Retrofit = Util.getRetrofit()
-    val currentName: MutableLiveData<CountryName> by lazy {
-        MutableLiveData<CountryName>()
+    val countries: MutableLiveData<ArrayList<Countries>> by lazy {
+        MutableLiveData<ArrayList<Countries>>()
     }
 
-    val currentLang: MutableLiveData<CountryLang> by lazy {
-        MutableLiveData<CountryLang>()
-    }
+    private var retrofit : Retrofit = Util.getRetrofit()
+
 
     val api = retrofit.create(CountryAPI::class.java)
 
     fun getCountryName(){
         viewModelScope.launch {
-            val response = api.getCountryName()
-            currentName.value = response
+            val country: ArrayList<Countries> = api.getCountries()
+            countries.value = country
         }
     }
 
-    fun getCountryLang(){
-        viewModelScope.launch {
-            val response2 = api.getCountryLang()
-            currentLang.value = response2
-        }
-    }
+
 }

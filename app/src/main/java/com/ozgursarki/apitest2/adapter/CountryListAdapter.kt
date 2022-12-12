@@ -3,17 +3,18 @@ package com.ozgursarki.apitest2.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ozgursarki.ClickListener
+import com.ozgursarki.ClickListenerForFlag
 import com.ozgursarki.apitest2.R
-import com.ozgursarki.apitest2.model.CountryNameItem
+import com.ozgursarki.apitest2.model.Countries
 import com.ozgursarki.apitest2.viewholder.CountryViewHolder
 
-class CountryListAdapter(private var countryList: ArrayList<CountryNameItem>): RecyclerView.Adapter<CountryViewHolder>() {
+class CountryListAdapter(private var countryList: ArrayList<Countries>): RecyclerView.Adapter<CountryViewHolder>() {
 
-    private lateinit var clicklistener:ClickListener
+    private lateinit var clicklistener:ClickListenerForFlag
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.country_row,parent,false)
+
         return CountryViewHolder(view)
     }
 
@@ -27,8 +28,15 @@ class CountryListAdapter(private var countryList: ArrayList<CountryNameItem>): R
         return countryList.size
     }
 
-    fun setList(newList: ArrayList<CountryNameItem>){
+    fun setList(newList: ArrayList<Countries>){
         countryList = newList
         notifyDataSetChanged()
     }
+
+
+
+    fun setListener(clickListenerForFlag: ClickListenerForFlag){
+        clicklistener = clickListenerForFlag
+    }
+
 }

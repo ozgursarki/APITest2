@@ -10,11 +10,11 @@ object Util {
     private var retrofit : Retrofit? = null
 
     fun getRetrofit(): Retrofit {
-        if(retrofit == null){
+        return if(retrofit == null){
             retrofit = Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).build()
-            return retrofit as Retrofit
+            retrofit as Retrofit
         }else{
-            return retrofit as Retrofit
+            retrofit as Retrofit
         }
     }
 }

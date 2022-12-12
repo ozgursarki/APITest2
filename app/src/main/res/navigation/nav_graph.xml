@@ -13,7 +13,12 @@
             app:destination="@id/clickedCountryFragment" />
     </fragment>
     <fragment
+
         android:id="@+id/clickedCountryFragment"
         android:name="com.ozgursarki.apitest2.view.ClickedCountryFragment"
-        android:label="ClickedCountryFragment" />
+        android:label="ClickedCountryFragment">
+        <argument
+            android:name="countryName"
+            app:argType="string" />
+    </fragment>
 </navigation>

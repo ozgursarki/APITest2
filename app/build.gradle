@@ -2,10 +2,13 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+
 }
 
 android {
     compileSdk 33
+
 
 
     defaultConfig {
@@ -72,6 +75,10 @@ dependencies {
 
     //viewModel
     implementation "android.arch.lifecycle:extensions:1.1.1"
+
+    //picasso
+
+    implementation 'com.squareup.picasso:picasso:2.8'
 
 
 

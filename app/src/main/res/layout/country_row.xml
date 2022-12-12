@@ -3,23 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/country_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_weight="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@tools:sample/avatars">
+
+    </ImageView>
 
     <TextView
         android:id="@+id/country_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Turkey"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/country_lang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Turkish"
+        android:layout_marginStart="56dp"
+        android:layout_weight="3"
         android:textSize="11sp"
-        app:layout_constraintBottom_toBottomOf="@+id/country_name"
-        app:layout_constraintStart_toEndOf="@+id/country_name"
-        app:layout_constraintTop_toTopOf="@+id/country_name" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/country_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.503"
+        tools:text="Turkey" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
