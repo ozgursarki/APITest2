@@ -11,6 +11,7 @@ import com.ozgursarki.apitest2.viewholder.CountryViewHolder
 class CountryListAdapter(private var countryList: ArrayList<Countries>): RecyclerView.Adapter<CountryViewHolder>() {
 
     private lateinit var clicklistener:ClickListenerForFlag
+    private   var searchList : ArrayList<Countries> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.country_row,parent,false)
@@ -30,7 +31,22 @@ class CountryListAdapter(private var countryList: ArrayList<Countries>): Recycle
 
     fun setList(newList: ArrayList<Countries>){
         countryList = newList
+        searchList.addAll(newList)
         notifyDataSetChanged()
+    }
+
+    fun searchChange(text : String){
+        val searchQuery = searchList.filter {
+            it.name.official.startsWith(text,true)
+
+        }
+
+        countryList.clear()
+        searchQuery.forEach {
+            countryList.add(it)
+        }
+        notifyDataSetChanged()
+
     }
 
 

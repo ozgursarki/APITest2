@@ -4,7 +4,7 @@ package com.ozgursarki.apitest2.view
 import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
-import androidx.appcompat.widget.SearchView
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -36,6 +36,18 @@ class CountryListFragment : Fragment(), ClickListenerForFlag {
         val adapter = CountryListAdapter(arrayListOf())
         binding.recyclerview.adapter = adapter
         adapter.setListener(this)
+
+        binding.searchview.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.searchChange(newText!!)
+                return true
+            }
+
+        })
 
         viewmodel = ViewModelProvider(this)[CountryListViewModel::class.java]
 
