@@ -3,6 +3,8 @@ package com.ozgursarki.apitest2.view
 
 import android.os.Bundle
 import android.view.*
+import android.widget.ArrayAdapter
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
