@@ -8,7 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface CountryAPI {
+sealed interface CountryAPI {
 
     @GET("all")
     suspend fun getCountries(): Country

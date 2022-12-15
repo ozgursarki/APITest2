@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.SearchView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ozgursarki.ClickListenerForFlag
 import com.ozgursarki.apitest2.R
 import com.ozgursarki.apitest2.adapter.CountryListAdapter
@@ -20,6 +22,7 @@ class CountryListFragment : Fragment(), ClickListenerForFlag {
 
     private lateinit var viewmodel: CountryListViewModel
     private lateinit var binding: CountryListFragmentBinding
+    private val multiRVAdapter = CountryListAdapter(countryList = ArrayList<Countries>())
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +31,12 @@ class CountryListFragment : Fragment(), ClickListenerForFlag {
     ): View {
         binding = CountryListFragmentBinding.inflate(layoutInflater, container, false)
         val view = binding.root
+
+        binding.recyclerview.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this@CountryListFragment.context)
+            adapter = multiRVAdapter
+        }
         return view
     }
 

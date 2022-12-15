@@ -1,3 +1,11 @@
 package com.ozgursarki.apitest2.model
 
-data class Countries(val flags : Flags, val name: Name)
+sealed class Countries(){
+    class Flags(
+        val flags: com.ozgursarki.apitest2.model.Flags
+    ): Countries()
+
+    class CountryName(
+        val name : Name
+    ) : Countries()
+}

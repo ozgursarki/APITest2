@@ -1,5 +1,6 @@
 package com.ozgursarki.apitest2
 
+import android.view.View
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -16,5 +17,13 @@ object Util {
         }else{
             retrofit as Retrofit
         }
+    }
+
+    fun View.show() {
+        this.visibility = View.VISIBLE
+    }
+
+    fun View.hide() {
+        this.visibility = View.GONE
     }
 }
