@@ -11,6 +11,7 @@ import com.squareup.picasso.Picasso
 
 class CountryViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
+
     fun setData(country: Countries, clicked: (flags:Countries) -> Unit){
         val countryName = itemView.findViewById<TextView>(R.id.country_name)
         val countryImage = itemView.findViewById<ImageView>(R.id.country_image)
