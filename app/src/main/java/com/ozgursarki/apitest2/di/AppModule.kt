@@ -2,7 +2,7 @@ package com.ozgursarki.apitest2.di
 
 
 import com.ozgursarki.apitest2.domain.repository.MyRepository
-import com.ozgursarki.apitest2.data.remote.CountryAPI
+import com.ozgursarki.apitest2.CountryAPI
 import com.ozgursarki.apitest2.data.repository.MyRepositoryImpl
 import dagger.Module
 import dagger.Provides
