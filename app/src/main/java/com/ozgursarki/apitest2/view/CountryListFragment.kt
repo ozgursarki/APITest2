@@ -3,25 +3,22 @@ package com.ozgursarki.apitest2.view
 
 import android.os.Bundle
 import android.view.*
-import android.widget.ArrayAdapter
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.ozgursarki.ClickListenerForFlag
-import com.ozgursarki.apitest2.R
 import com.ozgursarki.apitest2.adapter.CountryListAdapter
 import com.ozgursarki.apitest2.databinding.CountryListFragmentBinding
 import com.ozgursarki.apitest2.model.Countries
-import com.ozgursarki.apitest2.viewholder.CountryViewHolder
 import com.ozgursarki.apitest2.viewmodel.CountryListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class CountryListFragment : Fragment(), ClickListenerForFlag {
 
-    private lateinit var viewmodel: CountryListViewModel
     private lateinit var binding: CountryListFragmentBinding
+    private val viewmodel: CountryListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +31,9 @@ class CountryListFragment : Fragment(), ClickListenerForFlag {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
+
 
         val adapter = CountryListAdapter(arrayListOf())
         binding.recyclerview.adapter = adapter
@@ -51,12 +51,7 @@ class CountryListFragment : Fragment(), ClickListenerForFlag {
 
         })
 
-        viewmodel = ViewModelProvider(this)[CountryListViewModel::class.java]
-
         viewmodel.getCountryName()
-
-
-
 
         viewmodel.countries.observe(viewLifecycleOwner) {
             adapter.setList(it)

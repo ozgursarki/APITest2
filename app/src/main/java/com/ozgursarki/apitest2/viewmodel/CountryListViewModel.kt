@@ -4,31 +4,27 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.ozgursarki.apitest2.CountryAPI
-import com.ozgursarki.apitest2.Util
+import com.ozgursarki.apitest2.domain.repository.MyRepository
 import com.ozgursarki.apitest2.model.Countries
-import com.ozgursarki.apitest2.model.CountryLang
-import com.ozgursarki.apitest2.model.CountryName
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
+import javax.inject.Inject
 
-class CountryListViewModel(application: Application) : AndroidViewModel(application){
+@HiltViewModel
+class CountryListViewModel@Inject constructor(application: Application,private val repository: MyRepository) : AndroidViewModel(application){
 
     val countries: MutableLiveData<ArrayList<Countries>> by lazy {
         MutableLiveData<ArrayList<Countries>>()
     }
 
-    private var retrofit : Retrofit = Util.getRetrofit()
-
-
-    val api = retrofit.create(CountryAPI::class.java)
-
     fun getCountryName(){
         viewModelScope.launch {
-            val country: ArrayList<Countries> = api.getCountries()
+            val country: ArrayList<Countries> = repository.getCountries()
             countries.value = country
         }
     }
+
+
 
 
 }

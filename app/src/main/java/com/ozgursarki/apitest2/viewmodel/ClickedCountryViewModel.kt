@@ -4,28 +4,27 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.ozgursarki.apitest2.CountryAPI
-import com.ozgursarki.apitest2.Util
+import com.ozgursarki.apitest2.domain.repository.MyRepository
 import com.ozgursarki.apitest2.model.ClickedFlag
-import com.ozgursarki.apitest2.model.Countries
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
+import javax.inject.Inject
 
-class ClickedCountryViewModel(application:Application): AndroidViewModel(application) {
+@HiltViewModel
+class ClickedCountryViewModel@Inject constructor(application:Application, private val repository: MyRepository): AndroidViewModel(application) {
 
     val infoFlag : MutableLiveData<ArrayList<ClickedFlag>> by lazy {
         MutableLiveData<ArrayList<ClickedFlag>>()
     }
 
-    private var retrofit : Retrofit = Util.getRetrofit()
-
-    val api = retrofit.create(CountryAPI::class.java)
-
-    fun getFlagsInfo(name : String) {
+    fun getDetails(name:String){
         viewModelScope.launch {
-            val info = api.getCountriesInfo(name)
-            infoFlag.value = info
+            val details = repository.getCountriesInfo(name)
+            infoFlag.value = details
         }
     }
+
+
+
 
 }

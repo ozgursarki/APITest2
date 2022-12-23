@@ -1,15 +1,12 @@
 package com.ozgursarki.apitest2.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ozgursarki.ClickListenerForFlag
 import com.ozgursarki.apitest2.R
 import com.ozgursarki.apitest2.model.Countries
-import com.ozgursarki.apitest2.model.Flags
 import com.ozgursarki.apitest2.model.Title
-import com.ozgursarki.apitest2.viewholder.CountryViewHolder
 import com.ozgursarki.apitest2.viewholder.ImageViewHolder
 import com.ozgursarki.apitest2.viewholder.TitleViewHolder
 
