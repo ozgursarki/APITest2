@@ -4,7 +4,7 @@ import com.ozgursarki.apitest2.model.Country
 import com.ozgursarki.apitest2.model.InfoClickedFlag
 import retrofit2.http.Path
 
-interface MyRepository {
+interface  MyRepository {
 
 
     suspend fun getCountries(): Country
